@@ -46,7 +46,7 @@ Run the following commands in the **Package Manager Console** inside Visual Stud
 ```powershell
 Add-Migration InitialCreate
 Update-Database
-
+```
 ## 2. Running the Backend API
 
 - Open the backend API project in **Visual Studio**.  
@@ -64,7 +64,7 @@ Update-Database
 
 ```dart
 static const String url = "https://localhost:44388/api";
-
+```
 ## Running the Flutter App
 
 Run the Flutter app on your web platform .
