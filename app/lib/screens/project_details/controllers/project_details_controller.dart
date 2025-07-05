@@ -5,17 +5,44 @@ class ProjectDetailsController extends GetxController {
   List<Task> tasksByStatus(String status) {
     return tasks.where((task) => task.status == status).toList();
   }
+
   void updateTaskStatus(int id, String newStatus) {
     int index = tasks.indexWhere((task) => task.id == id);
     if (index != -1) {
       tasks[index] = tasks[index].copyWith(status: newStatus);
     }
   }
+
   var tasks = <Task>[
-    Task(id: 1, title: "UI Design", description: "Design login page", status: "To-Do", dueDate: DateTime.now()),
-    Task(id: 2, title: "Backend API", description: "Create task API", status: "Doing", dueDate: DateTime.now()),
-    Task(id: 3, title: "Dataffffbase", description: "Design DB schema", status: "Done", dueDate: DateTime.now()),
+    Task(
+      id: 1,
+      title: "UI Design",
+      description: "Design login page",
+      status: "To-Do",
+      dueDate: DateTime.now(),
+    ),
+    Task(
+      id: 2,
+      title: "Backend API",
+      description: "Create task API",
+      status: "Doing",
+      dueDate: DateTime.now(),
+    ),
+    Task(
+      id: 3,
+      title: "Dataffffbase",
+      description: "Design DB schema",
+      status: "Done",
+      dueDate: DateTime.now(),
+    ),
   ].obs;
+  late Projects project;
+
+  @override
+  void onInit() {
+    super.onInit();
+    project = Get.arguments as Projects;
+  }
 
   // Move task between lists
   void moveTask(
@@ -49,15 +76,24 @@ class ProjectDetailsController extends GetxController {
     update(); // Notify UI
   }
 
-  void addTask(String status, String title, String description, DateTime dueDate) {
-    final newId = tasks.isEmpty ? 1 : tasks.map((e) => e.id).reduce((a, b) => a > b ? a : b) + 1;
-    tasks.add(Task(
-      id: newId,
-      title: title,
-      description: description,
-      status: status,
-      dueDate: dueDate,
-    ));
+  void addTask(
+    String status,
+    String title,
+    String description,
+    DateTime dueDate,
+  ) {
+    final newId = tasks.isEmpty
+        ? 1
+        : tasks.map((e) => e.id).reduce((a, b) => a > b ? a : b) + 1;
+    tasks.add(
+      Task(
+        id: newId,
+        title: title,
+        description: description,
+        status: status,
+        dueDate: dueDate,
+      ),
+    );
   }
 
   void deleteTask(int taskId) {
@@ -104,7 +140,9 @@ class ProjectDetailsController extends GetxController {
                   final pickedDate = await showDatePicker(
                     context: context,
                     initialDate: DateTime.now(),
-                    firstDate: DateTime.now().subtract(const Duration(days: 365)),
+                    firstDate: DateTime.now().subtract(
+                      const Duration(days: 365),
+                    ),
                     lastDate: DateTime.now().add(const Duration(days: 365 * 5)),
                   );
                   if (pickedDate != null) {
@@ -137,5 +175,4 @@ class ProjectDetailsController extends GetxController {
       },
     );
   }
-
 }
