@@ -20,13 +20,13 @@ class HomeScreen extends StatelessWidget {
       body: Obx(() {
         if (controller.loading.value) {
           return const Center(child: CircularProgressIndicator());
-        } else if (controller.userProjects!.isEmpty) {
+        } else if (controller.userProjects.isEmpty) {
           return const Center(child: Text("No projects found."));
         } else {
           return Padding(
             padding: const EdgeInsets.all(16),
             child: GridView.builder(
-              itemCount: controller.userProjects!.length,
+              itemCount: controller.userProjects.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: crossAxisCount,
                 crossAxisSpacing: 16,
@@ -34,11 +34,11 @@ class HomeScreen extends StatelessWidget {
                 childAspectRatio: 1.2,
               ),
               itemBuilder: (context, index) {
-                final project = controller.userProjects![index];
+                final project = controller.userProjects[index];
                 return ProjectCard(
                   project: project,
                   onDelete: () => controller.deleteProject(project),
-                  onEdit: () => controller.showEditDialog(context, project),
+                  onEdit: () => controller.showEditDialog(context, project,false),
                 );
               },
             ),
@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
         }
       }),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => controller.addProject(),
+        onPressed: () => controller.showEditDialog(context, null, true),
         icon: const Icon(Icons.add),
         label: const Text("Add Project"),
       ),

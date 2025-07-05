@@ -50,7 +50,11 @@ class HomeController extends GetxController {
       },
     );
     if (dialogRes is bool && dialogRes) {
-      Map body =  {"id": project.id, "title": project.title, "description": project.description};
+      Map body = {
+        "id": project.id,
+        "title": project.title,
+        "description": project.description,
+      };
 
       try {
         var res = await http.post(Get.context, Api.deleteProject, body);
@@ -66,15 +70,15 @@ class HomeController extends GetxController {
     }
   }
 
-  void showEditDialog(BuildContext context, Projects project) {
-    final titleController = TextEditingController(text: project.title);
-    final descriptionController = TextEditingController(
-      text: project.description,
-    );
+  void showEditDialog(BuildContext context, Projects? project, bool isAddNew) {
+    if (!isAddNew) {
+      titleController = TextEditingController(text: project!.title);
+      descriptionController = TextEditingController(text: project.description);
+    }
 
     Get.dialog(
       AlertDialog(
-        title: const Text("Edit Project"),
+        title: Text(isAddNew ? "Add Project" : "Edit Project"),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -94,11 +98,11 @@ class HomeController extends GetxController {
           TextButton(onPressed: () => Get.back(), child: const Text("Cancel")),
           ElevatedButton(
             onPressed: () async {
-              await editProject(
-                project.id,
-                titleController.text,
-                descriptionController.text,
-              );
+              if (isAddNew) {
+                addProject();
+              } else {
+                await editProject(project!.id);
+              }
             },
             child: const Text("Save"),
           ),
@@ -107,8 +111,12 @@ class HomeController extends GetxController {
     );
   }
 
-  Future<void> editProject(int id, String title, String description) async {
-    Map body = {"id": id, "title": title, "description": description};
+  Future<void> editProject(int id) async {
+    Map body = {
+      "id": id,
+      "title": titleController.text,
+      "description": descriptionController.text,
+    };
     var res = await http.post(Get.context, Api.editProject, body);
     if (res.statusCode == 200) {
       Get.back();
@@ -119,7 +127,20 @@ class HomeController extends GetxController {
     }
   }
 
-  void addProject() {
-    Get.snackbar("Add", "Navigate to add new project");
+  void addProject() async {
+    Map body = {
+      "id": 0,
+      "title": titleController.text,
+      "description": descriptionController.text,
+      "created_by": 1,
+    };
+    var res = await http.post(Get.context, Api.addProject, body);
+    if (res.statusCode == 200) {
+      Get.back();
+      await fetchData();
+      Get.snackbar("Success", "Project Added successfully");
+    } else {
+      RequestHandler.errorRequest(Get.context!, message: res.body);
+    }
   }
 }
