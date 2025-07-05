@@ -123,6 +123,38 @@
   },
   {
     "ContainingType": "SprintoApi.Controllers.TasksController",
+    "Method": "DeleteTask",
+    "RelativePath": "api/Tasks/deleteTask",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SprintoApi.Models.TasksDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SprintoApi.Controllers.TasksController",
+    "Method": "EditTask",
+    "RelativePath": "api/Tasks/editTask",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SprintoApi.Models.Tasks",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SprintoApi.Controllers.TasksController",
     "Method": "GetProjectTasks",
     "RelativePath": "api/Tasks/getProjectTasks",
     "HttpMethod": "POST",
@@ -132,6 +164,22 @@
       {
         "Name": "tasksDto",
         "Type": "SprintoApi.Models.TasksDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SprintoApi.Controllers.TasksController",
+    "Method": "UpdateTaskStatus",
+    "RelativePath": "api/Tasks/updateTaskStatus",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SprintoApi.Models.UpdateTaskStatusRequest",
         "IsRequired": true
       }
     ],

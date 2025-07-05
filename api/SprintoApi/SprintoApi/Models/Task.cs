@@ -18,7 +18,15 @@ namespace SprintoApi.Models
 
     public class TasksDto
     {
+        public int id { get; set; }
         public int project_id { get; set; }
+        
 
+    }
+
+    public class UpdateTaskStatusRequest
+    {
+        public int Id { get; set; }
+        public int Status { get; set; }
     }
 }
