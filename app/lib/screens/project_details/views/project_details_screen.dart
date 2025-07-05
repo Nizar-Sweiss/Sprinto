@@ -47,12 +47,12 @@ class ProjectDetailsScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  status,
-                                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color: controller.getStatusColor(status),
-                                  ),
-                                ),
+                                controller.getStatusLabel(status),
+                            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: controller.getStatusColor(status),
+                            ),
+                          ),
                                 const SizedBox(height: 12),
                                 TextButton.icon(
                                   onPressed: () => controller.showAddTaskDialog(context, status),
@@ -68,7 +68,7 @@ class ProjectDetailsScreen extends StatelessWidget {
                                       return Padding(
                                         padding: const EdgeInsets.only(bottom: 12),
                                         child: Draggable<int>(
-                                          data: task.id,
+                          data: task.id!,
                                           feedback: SizedBox(
                                             width: 250,
                                             child: Material(
@@ -77,7 +77,7 @@ class ProjectDetailsScreen extends StatelessWidget {
                                                 opacity: 0.85,
                                                 child: TaskCard(
                                                   task: task,
-                                                  onDelete: () => controller.deleteTask(task.id),
+                                                  onDelete: () => controller.deleteTask(task.id!),
                                                 ),
                                               ),
                                             ),
@@ -86,12 +86,12 @@ class ProjectDetailsScreen extends StatelessWidget {
                                             opacity: 0.3,
                                             child: TaskCard(
                                               task: task,
-                                              onDelete: () => controller.deleteTask(task.id),
+                                              onDelete: () => controller.deleteTask(task.id!),
                                             ),
                                           ),
                                           child: TaskCard(
                                             task: task,
-                                            onDelete: () => controller.deleteTask(task.id),
+                                            onDelete: () => controller.deleteTask(task.id!),
                                           ),
                                         ),
                                       );

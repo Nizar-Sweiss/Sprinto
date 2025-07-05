@@ -1,10 +1,16 @@
 library project_details;
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:http/http.dart' as http;
 
+import '../../services/api_service.dart';
+import '../../services/http_service.dart';
+import '../../services/request_handler.dart';
 import '../home/index.dart';
 import '../home/models/projects.dart';
 import 'models/task.dart';

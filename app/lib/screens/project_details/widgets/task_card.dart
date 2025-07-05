@@ -1,6 +1,6 @@
 part of project_details;
 class TaskCard extends StatelessWidget {
-  final Task task;
+  final Tasks task;
   final VoidCallback onDelete;
 
   const TaskCard({super.key, required this.task, required this.onDelete});
@@ -12,8 +12,8 @@ class TaskCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: ListTile(
-        title: Text(task.title, style: const TextStyle(fontWeight: FontWeight.bold)),
-        subtitle: Text(task.description),
+        title: Text(task.title!, style: const TextStyle(fontWeight: FontWeight.bold)),
+        subtitle: Text(task.description!),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
