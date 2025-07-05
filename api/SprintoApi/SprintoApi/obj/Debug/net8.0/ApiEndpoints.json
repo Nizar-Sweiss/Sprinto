@@ -1,0 +1,76 @@
+[
+  {
+    "ContainingType": "SprintoApi.Controllers.LoginController",
+    "Method": "addUser",
+    "RelativePath": "api/Login/addUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usersDto",
+        "Type": "SprintoApi.Models.UsersDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SprintoApi.Controllers.LoginController",
+    "Method": "getAllUser",
+    "RelativePath": "api/Login/getAllUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SprintoApi.Controllers.LoginController",
+    "Method": "Login",
+    "RelativePath": "api/Login/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usersDto",
+        "Type": "SprintoApi.Models.UsersDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SprintoApi.Controllers.ProjectsController",
+    "Method": "adaddProjectdUser",
+    "RelativePath": "api/Projects/addProject",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "project",
+        "Type": "SprintoApi.Models.Projects",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SprintoApi.Controllers.ProjectsController",
+    "Method": "getUserProjects",
+    "RelativePath": "api/Projects/getUserProjects",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectsDto",
+        "Type": "SprintoApi.Models.ProjectsDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
