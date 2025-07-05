@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                 return ProjectCard(
                   project: project,
                   onDelete: () => controller.deleteProject(project.id),
-                  onEdit: () => controller.editProject(project),
+                  onEdit: () => controller.showEditDialog(context, project),
                 );
               },
             ),
