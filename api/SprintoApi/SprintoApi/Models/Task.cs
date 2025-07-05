@@ -1,0 +1,18 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SprintoApi.Models
+{
+    public class Tasks
+    {
+        [Key]
+        public int id { get; set; }
+        public int project_id { get; set; }
+        public string Description { get; set; }
+        public string title { get; set; }
+        public int status { get; set; }
+        public DateTime due_date { get; set; }
+        public int created_by { get; set; }
+        public int created_date { get; set; }
+
+    }
+}
