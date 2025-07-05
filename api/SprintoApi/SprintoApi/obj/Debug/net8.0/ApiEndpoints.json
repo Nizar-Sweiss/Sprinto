@@ -104,5 +104,37 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SprintoApi.Controllers.TasksController",
+    "Method": "AddTask",
+    "RelativePath": "api/Tasks/addTask",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "task",
+        "Type": "SprintoApi.Models.Tasks",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SprintoApi.Controllers.TasksController",
+    "Method": "GetProjectTasks",
+    "RelativePath": "api/Tasks/getProjectTasks",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tasksDto",
+        "Type": "SprintoApi.Models.TasksDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

@@ -12,7 +12,13 @@ namespace SprintoApi.Models
         public int status { get; set; }
         public DateTime due_date { get; set; }
         public int created_by { get; set; }
-        public int created_date { get; set; }
+        public DateTime created_date { get; set; }
+
+    }
+
+    public class TasksDto
+    {
+        public int project_id { get; set; }
 
     }
 }
