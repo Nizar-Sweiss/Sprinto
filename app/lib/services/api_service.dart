@@ -15,4 +15,13 @@ class Api{
   static String editProject = "$projects/editProject";
   static String addProject = "$projects/addProject";
   static String deleteProject = "$projects/deleteProject";
+
+  /// Tasks
+  static String tasks = "$_baseUrl/Tasks";
+  static String getProjectTasks= "$tasks/getProjectTasks";
+  static String addTask= "$tasks/addTask";
+  static String updateTaskStatus= "$tasks/updateTaskStatus";
+  static String editTask= "$tasks/editTask";
+  static String deleteTask= "$tasks/deleteTask";
+
 }

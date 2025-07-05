@@ -12,8 +12,8 @@ using SprintoApi.Data;
 namespace SprintoApi.Migrations
 {
     [DbContext(typeof(SprintoDbContext))]
-    [Migration("20250705065908_Tasks")]
-    partial class Tasks
+    [Migration("20250705165818_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,8 +67,8 @@ namespace SprintoApi.Migrations
                     b.Property<int>("created_by")
                         .HasColumnType("int");
 
-                    b.Property<int>("created_date")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("created_date")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("due_date")
                         .HasColumnType("datetime2");

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SprintoApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4fbd854a1c19af08f6be7f914d64f9f043e92a62")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c7b0015470d492dca7541f8c2cb817d466362ec1")]
 [assembly: System.Reflection.AssemblyProductAttribute("SprintoApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SprintoApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

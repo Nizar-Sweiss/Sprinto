@@ -64,8 +64,8 @@ namespace SprintoApi.Migrations
                     b.Property<int>("created_by")
                         .HasColumnType("int");
 
-                    b.Property<int>("created_date")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("created_date")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("due_date")
                         .HasColumnType("datetime2");
