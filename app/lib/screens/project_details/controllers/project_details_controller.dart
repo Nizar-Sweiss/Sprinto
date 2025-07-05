@@ -1,11 +1,15 @@
 part of project_details;
 
 class ProjectDetailsController extends GetxController {
-  //final List<String> statuses = ["To-Do", "Doing", "Done"];
   final List<int> statuses = [0, 1, 2]; // 0: To-Do, 1: Doing, 2: Done
-  var http = HttpService();
+  late Projects project;
+  var http = HttpService.instance;
   RxList<Tasks> tasks = <Tasks>[].obs;
   RxBool loading = false.obs;
+  var titleController = TextEditingController();
+  var descriptionController = TextEditingController();
+  DateTime? selectedDate ;
+  int? selectedStatus ;
 
   List<Tasks> tasksByStatus(int status) {
     return tasks.where((task) => task.status == status).toList();
@@ -15,12 +19,11 @@ class ProjectDetailsController extends GetxController {
     int index = tasks.indexWhere((task) => task.id == id);
     if (index != -1) {
       tasks[index] = tasks[index].copyWith(status: newStatus);
-      tasks.refresh(); // Update UI
+      tasks.refresh();
     }
   }
 
 
-  late Projects project;
 
   @override
   void onInit() {
@@ -30,14 +33,12 @@ class ProjectDetailsController extends GetxController {
     fetchData();
   }
 
-
   Future<void> fetchData() async {
     await fetchTasks();
   }
 
   Future<void> fetchTasks() async {
     loading.value = true;
-
     try {
       Map body = {"project_id": project.id};
       var res = await http.post(Get.context!, Api.getProjectTasks, body);
@@ -54,6 +55,27 @@ class ProjectDetailsController extends GetxController {
     }
 
     loading.value = false;
+  }
+
+  Future<void> updateTaskStatusOnServer(int taskId, int newStatus) async {
+    try {
+      Map<String, dynamic> body = {"id": taskId, "status": newStatus};
+
+      var res = await http.post(Get.context!, Api.updateTaskStatus, body);
+
+      if (res.statusCode == 200) {
+        // Update local task status
+        int index = tasks.indexWhere((task) => task.id == taskId);
+        if (index != -1) {
+          tasks[index] = tasks[index].copyWith(status: newStatus);
+          tasks.refresh();
+        }
+      } else {
+        RequestHandler.errorRequest(Get.context!, message: res.body);
+      }
+    } catch (e) {
+      Get.snackbar("Error", "Failed to update task status");
+    }
   }
 
   String getStatusLabel(int status) {
@@ -82,14 +104,142 @@ class ProjectDetailsController extends GetxController {
     }
   }
 
+  Future<void> editTaskOnServer(Tasks task) async {
+    try {
+      Map<String, dynamic> body = {
+        "id": task.id,
+        "title": task.title,
+        "description": task.description,
+        "status": task.status,
+        "dueDate": task.dueDate?.toIso8601String(),
+      };
 
-  void showAddTaskDialog(BuildContext context, int status) {
-    final titleController = TextEditingController();
-    final descriptionController = TextEditingController();
-    DateTime? selectedDate;
+      var res = await http.post(Get.context!, Api.editTask, body);
+
+      if (res.statusCode == 200) {
+        int index = tasks.indexWhere((t) => t.id == task.id);
+        if (index != -1) {
+          tasks[index] = task;
+          tasks.refresh();
+        }
+        Get.snackbar("Success", "Task updated");
+      } else {
+        RequestHandler.errorRequest(Get.context!, message: res.body);
+      }
+    } catch (e) {
+      Get.snackbar("Error", "Failed to update task");
+    }
+  }
+
+  void showEditTaskDialog(BuildContext context, Tasks task) {
+     titleController = TextEditingController(text: task.title);
+     descriptionController = TextEditingController(text: task.description);
+     selectedDate = task.dueDate;
+     selectedStatus = task.status;
 
     showDialog(
       context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Edit Task"),
+          content: StatefulBuilder(
+            builder: (context, setState) {
+              return SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    TextField(
+                      controller: titleController,
+                      decoration: const InputDecoration(labelText: "Title"),
+                    ),
+                    TextField(
+                      controller: descriptionController,
+                      decoration: const InputDecoration(
+                        labelText: "Description",
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    DropdownButtonFormField<int>(
+                      value: selectedStatus,
+                      items: [
+                        DropdownMenuItem(value: 0, child: Text("To-Do")),
+                        DropdownMenuItem(value: 1, child: Text("Doing")),
+                        DropdownMenuItem(value: 2, child: Text("Done")),
+                      ],
+                      onChanged: (val) {
+                        if (val != null) {
+                          setState(() {
+                            selectedStatus = val;
+                          });
+                        }
+                      },
+                      decoration: const InputDecoration(labelText: "Status"),
+                    ),
+                    const SizedBox(height: 8),
+                    TextButton(
+                      onPressed: () async {
+                        final pickedDate = await showDatePicker(
+                          context: context,
+                          initialDate: selectedDate,
+                          firstDate: DateTime.now().subtract(
+                            const Duration(days: 365),
+                          ),
+                          lastDate: DateTime.now().add(
+                            const Duration(days: 365 * 5),
+                          ),
+                        );
+                        if (pickedDate != null) {
+                          setState(() {
+                            selectedDate = pickedDate;
+                          });
+                        }
+                      },
+                      child: Text(
+                        "Due Date: ${selectedDate?.toLocal().toString().split(' ')[0]}",
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text("Cancel"),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                if (titleController.text.isNotEmpty &&
+                    descriptionController.text.isNotEmpty) {
+                  Tasks updatedTask = task.copyWith(
+                    title: titleController.text,
+                    description: descriptionController.text,
+                    status: selectedStatus,
+                    dueDate: selectedDate,
+                  );
+
+                  await editTaskOnServer(updatedTask);
+                  titleController.clear();
+                  descriptionController.clear();
+                  selectedDate = DateTime.now();
+                  selectedStatus = 0;
+                  Navigator.pop(context);
+                } else {
+                  Get.snackbar("Error", "Please fill all fields");
+                }
+              },
+              child: const Text("Save"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void showAddTaskDialog( int status) {
+    showDialog(
+      context: Get.context!,
       builder: (context) {
         return AlertDialog(
           title: const Text("Add New Task"),
@@ -107,9 +257,11 @@ class ProjectDetailsController extends GetxController {
               const SizedBox(height: 8),
               TextButton.icon(
                 icon: const Icon(Icons.date_range),
-                label: Text(selectedDate == null
-                    ? "Pick Due Date"
-                    : "Due: ${selectedDate?.toLocal().toString().split(' ')[0]}"),
+                label: Text(
+                  selectedDate == null
+                      ? "Pick Due Date"
+                      : "Due: ${selectedDate?.toLocal().toString().split(' ')[0]}",
+                ),
                 onPressed: () async {
                   final pickedDate = await showDatePicker(
                     context: context,
@@ -135,13 +287,16 @@ class ProjectDetailsController extends GetxController {
                     descriptionController.text.isNotEmpty &&
                     selectedDate != null) {
                   await addTaskToApi(
-                    projectId: project.id!,
+                    projectId: project.id,
                     title: titleController.text,
                     description: descriptionController.text,
                     status: status,
                     dueDate: selectedDate!,
                     createdBy: 1, // Replace with real user ID later
                   );
+                  titleController.clear();
+                  descriptionController.clear();
+                  selectedDate= DateTime.now();
                   Navigator.pop(context);
                 } else {
                   Get.snackbar("Error", "Please fill all fields");
@@ -154,6 +309,7 @@ class ProjectDetailsController extends GetxController {
       },
     );
   }
+
   Future<void> addTaskToApi({
     required int projectId,
     required String title,
@@ -218,12 +374,7 @@ class ProjectDetailsController extends GetxController {
     update(); // Notify UI
   }
 
-  void addTask(
-      int status,
-      String title,
-      String description,
-      DateTime dueDate,
-      ) {
+  void addTask(int status, String title, String description, DateTime dueDate) {
     final newId = tasks.isEmpty
         ? 1
         : tasks.map((e) => e.id ?? 0).reduce((a, b) => a > b ? a : b) + 1;
@@ -238,74 +389,24 @@ class ProjectDetailsController extends GetxController {
     );
   }
 
+  Future<void> deleteTask(Tasks taskId) async {
+    try {
+      Map<String, dynamic> body = {
+        "id": taskId.id,
+        "project_id": taskId.projectId,
+      };
 
-  void deleteTask(int taskId) {
-    tasks.removeWhere((task) => task.id == taskId);
+      var res = await http.post(Get.context!, Api.deleteTask, body);
+
+      if (res.statusCode == 200) {
+        tasks.removeWhere((task) => task.id == taskId.id);
+        tasks.refresh();
+        Get.snackbar("Deleted", "Task deleted successfully");
+      } else {
+        RequestHandler.errorRequest(Get.context!, message: res.body);
+      }
+    } catch (e) {
+      Get.snackbar("Error", "Failed to delete task");
+    }
   }
-
-
-/*
-  void showAddTaskDialog(BuildContext context, int status) {
-    final titleController = TextEditingController();
-    final descriptionController = TextEditingController();
-    DateTime? selectedDate;
-
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text("Add New Task"),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: titleController,
-                decoration: const InputDecoration(labelText: "Title"),
-              ),
-              TextField(
-                controller: descriptionController,
-                decoration: const InputDecoration(labelText: "Description"),
-              ),
-              const SizedBox(height: 8),
-              TextButton(
-                onPressed: () {
-                  if (titleController.text.isNotEmpty &&
-                      descriptionController.text.isNotEmpty &&
-                      selectedDate != null) {
-                    addTask(
-                      status, // now int
-                      titleController.text,
-                      descriptionController.text,
-                      selectedDate!,
-                    );
-                    Navigator.pop(context);
-                  }
-                },
-                child: const Text("Pick Due Date"),
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                if (titleController.text.isNotEmpty &&
-                    descriptionController.text.isNotEmpty &&
-                    selectedDate != null) {
-                  addTask(
-                    status,
-                    titleController.text,
-                    descriptionController.text,
-                    selectedDate!,
-                  );
-                  Navigator.pop(context);
-                }
-              },
-              child: const Text("Save"),
-            ),
-          ],
-        );
-      },
-    );
-  }*/
-
 }

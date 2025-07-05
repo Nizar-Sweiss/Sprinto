@@ -1,7 +1,7 @@
 part of home;
 
 class HomeController extends GetxController {
-  var http = HttpService();
+  var http = HttpService.instance;
   RxList<Projects> userProjects = <Projects>[].obs;
   RxBool loading = false.obs;
 
@@ -103,6 +103,8 @@ class HomeController extends GetxController {
               } else {
                 await editProject(project!.id);
               }
+              descriptionController.clear();
+              titleController.clear();
             },
             child: const Text("Save"),
           ),

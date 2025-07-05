@@ -1,7 +1,7 @@
 part of login;
 
 class LoginController extends GetxController {
-  var http = HttpService();
+  var http = HttpService.instance;
 
   User? user;
 
@@ -26,6 +26,7 @@ class LoginController extends GetxController {
     } else if (res.statusCode == 401) {
       RequestHandler.errorRequest(Get.context!, message: res.body);
     }
+    // todo add else
   }
 
   void setLoading() {

@@ -1,7 +1,9 @@
 part of project_details;
 
 class ProjectDetailsScreen extends StatelessWidget {
-  final ProjectDetailsController controller = Get.put(ProjectDetailsController());
+  final ProjectDetailsController controller = Get.put(
+    ProjectDetailsController(),
+  );
 
   ProjectDetailsScreen({super.key});
 
@@ -9,11 +11,9 @@ class ProjectDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
-      appBar: AppBar(
-        title: const Text("Project Name"),
-      ),
+      appBar: AppBar(title: Text(controller.project.title)),
       body: Obx(
-            () => SingleChildScrollView(
+        () => SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Padding(
             padding: const EdgeInsets.all(12),
@@ -37,73 +37,69 @@ class ProjectDetailsScreen extends StatelessWidget {
                       ],
                     ),
                     child: DragTarget<int>(
-                      onAccept: (taskId) {
-                        controller.updateTaskStatus(taskId, status);
+                      onAccept: (taskId) async {
+                        await controller.updateTaskStatusOnServer(
+                          taskId,
+                          status,
+                        );
                       },
-                        builder: (context, candidateData, rejectedData) {
-                          return Padding(
-                            padding: const EdgeInsets.all(16),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
+                      builder: (context, candidateData, rejectedData) {
+                        return Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
                                 controller.getStatusLabel(status),
-                            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: controller.getStatusColor(status),
-                            ),
-                          ),
-                                const SizedBox(height: 12),
-                                TextButton.icon(
-                                  onPressed: () => controller.showAddTaskDialog(context, status),
-                                  icon: const Icon(Icons.add),
-                                  label: const Text("Add Task"),
-                                ),
-                                const SizedBox(height: 12),
-                                Expanded(
-                                  child: ListView.builder(
-                                    itemCount: tasks.length,
-                                    itemBuilder: (context, index) {
-                                      final task = tasks[index];
-                                      return Padding(
-                                        padding: const EdgeInsets.only(bottom: 12),
-                                        child: Draggable<int>(
-                          data: task.id!,
-                                          feedback: SizedBox(
-                                            width: 250,
-                                            child: Material(
-                                              color: Colors.transparent,
-                                              child: Opacity(
-                                                opacity: 0.85,
-                                                child: TaskCard(
-                                                  task: task,
-                                                  onDelete: () => controller.deleteTask(task.id!),
-                                                ),
-                                              ),
+                                style: Theme.of(context).textTheme.titleLarge!
+                                    .copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      color: controller.getStatusColor(status),
+                                    ),
+                              ),
+                              const SizedBox(height: 12),
+                              TextButton.icon(
+                                onPressed: () =>
+                                    controller.showAddTaskDialog(status),
+                                icon: const Icon(Icons.add),
+                                label: const Text("Add Task"),
+                              ),
+                              const SizedBox(height: 12),
+                              Expanded(
+                                child: ListView.builder(
+                                  itemCount: tasks.length,
+                                  itemBuilder: (context, index) {
+                                    final task = tasks[index];
+                                    return Padding(
+                                      padding: const EdgeInsets.only(
+                                        bottom: 12,
+                                      ),
+                                      child: Draggable<int>(
+                                        data: task.id!,
+                                        feedback: SizedBox(
+                                          width: 250,
+                                          child: Material(
+                                            color: Colors.transparent,
+                                            child: Opacity(
+                                              opacity: 0.85,
+                                              child: TaskCard(task: task),
                                             ),
-                                          ),
-                                          childWhenDragging: Opacity(
-                                            opacity: 0.3,
-                                            child: TaskCard(
-                                              task: task,
-                                              onDelete: () => controller.deleteTask(task.id!),
-                                            ),
-                                          ),
-                                          child: TaskCard(
-                                            task: task,
-                                            onDelete: () => controller.deleteTask(task.id!),
                                           ),
                                         ),
-                                      );
-                                    },
-                                  ),
+                                        childWhenDragging: Opacity(
+                                          opacity: 0.3,
+                                          child: TaskCard(task: task),
+                                        ),
+                                        child: TaskCard(task: task),
+                                      ),
+                                    );
+                                  },
                                 ),
-                              ],
-                            ),
-                          );
-                        },
-
-
+                              ),
+                            ],
+                          ),
+                        );
+                      },
                     ),
                   ),
                 );
@@ -114,7 +110,8 @@ class ProjectDetailsScreen extends StatelessWidget {
       ),
     );
   }
-/*
+
+  /*
   void _showStatusDialog(BuildContext context, int taskId) {
     showDialog(
       context: context,
