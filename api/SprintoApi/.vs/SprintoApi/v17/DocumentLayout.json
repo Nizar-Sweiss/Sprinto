@@ -1,0 +1,213 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|c:\\users\\nizar\\documents\\github\\sprinto\\api\\sprintoapi\\sprintoapi\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|solutionrelative:sprintoapi\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|c:\\users\\nizar\\documents\\github\\sprinto\\api\\sprintoapi\\sprintoapi\\models\\projects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|solutionrelative:sprintoapi\\models\\projects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|c:\\users\\nizar\\documents\\github\\sprinto\\api\\sprintoapi\\sprintoapi\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|solutionrelative:sprintoapi\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|c:\\users\\nizar\\documents\\github\\sprinto\\api\\sprintoapi\\sprintoapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|solutionrelative:sprintoapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|c:\\users\\nizar\\documents\\github\\sprinto\\api\\sprintoapi\\sprintoapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|solutionrelative:sprintoapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|c:\\users\\nizar\\documents\\github\\sprinto\\api\\sprintoapi\\sprintoapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|solutionrelative:sprintoapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|c:\\users\\nizar\\documents\\github\\sprinto\\api\\sprintoapi\\sprintoapi\\sprintoapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|solutionrelative:sprintoapi\\sprintoapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|c:\\users\\nizar\\documents\\github\\sprinto\\api\\sprintoapi\\sprintoapi\\data\\sprintodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|solutionrelative:sprintoapi\\data\\sprintodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|c:\\users\\nizar\\documents\\github\\sprinto\\api\\sprintoapi\\sprintoapi\\models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|solutionrelative:sprintoapi\\models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|c:\\users\\nizar\\documents\\github\\sprinto\\api\\sprintoapi\\sprintoapi\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|solutionrelative:sprintoapi\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|c:\\users\\nizar\\documents\\github\\sprinto\\api\\sprintoapi\\sprintoapi\\migrations\\sprintodbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|solutionrelative:sprintoapi\\migrations\\sprintodbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|c:\\users\\nizar\\documents\\github\\sprinto\\api\\sprintoapi\\sprintoapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{26F18C0E-3CA8-44C2-A22A-D4EE64810272}|SprintoApi\\SprintoApi.csproj|solutionrelative:sprintoapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProjectsController.cs",
+              "DocumentMoniker": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Controllers\\ProjectsController.cs",
+              "RelativeDocumentMoniker": "SprintoApi\\Controllers\\ProjectsController.cs",
+              "ToolTip": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Controllers\\ProjectsController.cs",
+              "RelativeToolTip": "SprintoApi\\Controllers\\ProjectsController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA9wBsAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-05T13:44:21.662Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Projects.cs",
+              "DocumentMoniker": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Models\\Projects.cs",
+              "RelativeDocumentMoniker": "SprintoApi\\Models\\Projects.cs",
+              "ToolTip": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Models\\Projects.cs",
+              "RelativeToolTip": "SprintoApi\\Models\\Projects.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-05T06:46:47.02Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "SprintoDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Migrations\\SprintoDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "SprintoApi\\Migrations\\SprintoDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Migrations\\SprintoDbContextModelSnapshot.cs",
+              "RelativeToolTip": "SprintoApi\\Migrations\\SprintoDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAiwGcAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T17:10:05.315Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "SprintoApi\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Properties\\launchSettings.json",
+              "RelativeToolTip": "SprintoApi\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-04T17:09:57.939Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "SprintoApi\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "SprintoApi\\Controllers\\LoginController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T16:53:12.173Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Program.cs",
+              "RelativeDocumentMoniker": "SprintoApi\\Program.cs",
+              "ToolTip": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Program.cs",
+              "RelativeToolTip": "SprintoApi\\Program.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACQAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T16:41:57.277Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\appsettings.json",
+              "RelativeDocumentMoniker": "SprintoApi\\appsettings.json",
+              "ToolTip": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\appsettings.json",
+              "RelativeToolTip": "SprintoApi\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-04T16:38:13.931Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Users.cs",
+              "DocumentMoniker": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Models\\Users.cs",
+              "RelativeDocumentMoniker": "SprintoApi\\Models\\Users.cs",
+              "ToolTip": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Models\\Users.cs",
+              "RelativeToolTip": "SprintoApi\\Models\\Users.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAAAkAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T16:36:32.039Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SprintoDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Data\\SprintoDbContext.cs",
+              "RelativeDocumentMoniker": "SprintoApi\\Data\\SprintoDbContext.cs",
+              "ToolTip": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Data\\SprintoDbContext.cs",
+              "RelativeToolTip": "SprintoApi\\Data\\SprintoDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T16:30:48.382Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SprintoApi.csproj",
+              "DocumentMoniker": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\SprintoApi.csproj",
+              "RelativeDocumentMoniker": "SprintoApi\\SprintoApi.csproj",
+              "ToolTip": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\SprintoApi.csproj",
+              "RelativeToolTip": "SprintoApi\\SprintoApi.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-07-04T17:10:22.986Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "SprintoApi\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\appsettings.Development.json",
+              "RelativeToolTip": "SprintoApi\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-04T17:10:12.781Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Task.cs",
+              "DocumentMoniker": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Models\\Task.cs",
+              "RelativeDocumentMoniker": "SprintoApi\\Models\\Task.cs",
+              "ToolTip": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Models\\Task.cs",
+              "RelativeToolTip": "SprintoApi\\Models\\Task.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-05T06:53:52.743Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

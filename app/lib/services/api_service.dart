@@ -12,4 +12,7 @@ class Api{
   /// Project
   static String projects = "$_baseUrl/Projects";
   static String getUserProjects = "$projects/getUserProjects";
+  static String editProject = "$projects/editProject";
+  static String addProject = "$projects/addProject";
+  static String deleteProject = "$projects/deleteProject";
 }
