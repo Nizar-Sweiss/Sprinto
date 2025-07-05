@@ -8,4 +8,8 @@ class Api{
   static String login = "$_baseUrl/Login";
   static String auth = "$login/login";
   static String getAllusers = "$login/getAllUser";
+
+  /// Project
+  static String projects = "$_baseUrl/Projects";
+  static String getUserProjects = "$projects/getUserProjects";
 }
