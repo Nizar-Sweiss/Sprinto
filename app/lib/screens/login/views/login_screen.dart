@@ -35,10 +35,12 @@ class LoginScreen extends StatelessWidget {
               ),
               const SizedBox(height: 24),
               TextField(
+                controller: controller.usernameController,
                 decoration: const InputDecoration(hintText: 'Username'),
               ),
               const SizedBox(height: 16),
               TextField(
+                controller: controller.passwordController,
                 obscureText: true,
                 decoration: const InputDecoration(hintText: 'Password'),
               ),
@@ -46,7 +48,7 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () =>controller.signInRequest(),
                   child: const Text('Login'),
                 ),
               )
