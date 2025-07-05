@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'colors.dart';
 
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
@@ -36,4 +37,20 @@ class AppTheme {
     ),
 
   );
+
 }
+EdgeInsets kPadding([double horizontal = 0, double vertical = 0]) =>
+    EdgeInsets.symmetric(horizontal: horizontal, vertical: vertical);
+
+extension EmptyPadding on num {
+  SizedBox get ph => SizedBox(height: toDouble());
+  SizedBox get pw => SizedBox(width: toDouble());
+  SizedBox get phw => SizedBox(height: toDouble(), width: toDouble());
+}
+
+
+const kButtonTextStyle = TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.w400,
+  color: l1Black,
+);
