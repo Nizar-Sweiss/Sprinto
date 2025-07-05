@@ -43,8 +43,24 @@
   },
   {
     "ContainingType": "SprintoApi.Controllers.ProjectsController",
-    "Method": "adaddProjectdUser",
+    "Method": "addProjectd",
     "RelativePath": "api/Projects/addProject",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "project",
+        "Type": "SprintoApi.Models.Projects",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SprintoApi.Controllers.ProjectsController",
+    "Method": "EditProject",
+    "RelativePath": "api/Projects/editProject",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

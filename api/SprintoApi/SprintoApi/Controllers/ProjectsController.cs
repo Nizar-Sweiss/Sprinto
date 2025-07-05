@@ -25,7 +25,7 @@ namespace SprintoApi.Controllers
 
         [HttpPost]
         [Route("addProject")]
-        public IActionResult adaddProjectdUser(Projects project)
+        public IActionResult addProjectd(Projects project)
         {
             Projects newproject = new Projects { created_by = project.created_by, created_date = DateTime.Now, description = project.description, title = project.title };
             dbContext.projects.Add(newproject);
@@ -33,6 +33,24 @@ namespace SprintoApi.Controllers
 
             return Ok(newproject);
 
+        }
+
+        [HttpPost]
+        [Route("editProject")]
+        public IActionResult EditProject([FromBody] Projects project)
+        {
+            var existingProject = dbContext.projects.FirstOrDefault(p => p.id == project.id);
+            if (existingProject == null)
+            {
+                return NotFound("Project not found");
+            }
+
+            existingProject.title = project.title;
+            existingProject.description = project.description;
+
+            dbContext.SaveChanges();
+
+            return Ok(existingProject);
         }
     }
 }

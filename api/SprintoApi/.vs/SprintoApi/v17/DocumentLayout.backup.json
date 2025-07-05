@@ -68,7 +68,7 @@
               "RelativeDocumentMoniker": "SprintoApi\\Controllers\\ProjectsController.cs",
               "ToolTip": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Controllers\\ProjectsController.cs",
               "RelativeToolTip": "SprintoApi\\Controllers\\ProjectsController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAcwCYAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-05T13:44:21.662Z",
               "EditorCaption": ""
@@ -83,8 +83,7 @@
               "RelativeToolTip": "SprintoApi\\Models\\Projects.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-05T06:46:47.02Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-05T06:46:47.02Z"
             },
             {
               "$type": "Document",
@@ -96,8 +95,7 @@
               "RelativeToolTip": "SprintoApi\\Migrations\\SprintoDbContextModelSnapshot.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAiwGcAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-04T17:10:05.315Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-04T17:10:05.315Z"
             },
             {
               "$type": "Document",
@@ -109,8 +107,7 @@
               "RelativeToolTip": "SprintoApi\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-04T17:09:57.939Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-04T17:09:57.939Z"
             },
             {
               "$type": "Document",
@@ -122,8 +119,7 @@
               "RelativeToolTip": "SprintoApi\\Controllers\\LoginController.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-04T16:53:12.173Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-04T16:53:12.173Z"
             },
             {
               "$type": "Document",
@@ -135,8 +131,7 @@
               "RelativeToolTip": "SprintoApi\\Program.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAAACQAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-04T16:41:57.277Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-04T16:41:57.277Z"
             },
             {
               "$type": "Document",
@@ -148,8 +143,7 @@
               "RelativeToolTip": "SprintoApi\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-04T16:38:13.931Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-04T16:38:13.931Z"
             },
             {
               "$type": "Document",
@@ -161,8 +155,7 @@
               "RelativeToolTip": "SprintoApi\\Models\\Users.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAAAAAkAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-04T16:36:32.039Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-04T16:36:32.039Z"
             },
             {
               "$type": "Document",
@@ -174,8 +167,7 @@
               "RelativeToolTip": "SprintoApi\\Data\\SprintoDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-04T16:30:48.382Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-04T16:30:48.382Z"
             },
             {
               "$type": "Document",
@@ -187,8 +179,7 @@
               "RelativeToolTip": "SprintoApi\\SprintoApi.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-07-04T17:10:22.986Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-04T17:10:22.986Z"
             },
             {
               "$type": "Document",
@@ -200,8 +191,7 @@
               "RelativeToolTip": "SprintoApi\\appsettings.Development.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-04T17:10:12.781Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-04T17:10:12.781Z"
             },
             {
               "$type": "Document",
@@ -213,8 +203,7 @@
               "RelativeToolTip": "SprintoApi\\Models\\Task.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAYAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-05T06:53:52.743Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-05T06:53:52.743Z"
             }
           ]
         }
