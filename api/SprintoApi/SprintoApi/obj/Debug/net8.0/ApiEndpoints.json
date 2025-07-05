@@ -59,6 +59,22 @@
   },
   {
     "ContainingType": "SprintoApi.Controllers.ProjectsController",
+    "Method": "DeleteProject",
+    "RelativePath": "api/Projects/deleteProject",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "project",
+        "Type": "SprintoApi.Models.Projects",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SprintoApi.Controllers.ProjectsController",
     "Method": "EditProject",
     "RelativePath": "api/Projects/editProject",
     "HttpMethod": "POST",

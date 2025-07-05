@@ -52,5 +52,22 @@ namespace SprintoApi.Controllers
 
             return Ok(existingProject);
         }
+
+        [HttpPost]
+        [Route("deleteProject")]
+        public IActionResult DeleteProject([FromBody] Projects project)
+        {
+            var existingProject = dbContext.projects.FirstOrDefault(p => p.id == project.id);
+            if (existingProject == null)
+            {
+                return NotFound("Project not found");
+            }
+
+            dbContext.projects.Remove(existingProject);
+            dbContext.SaveChanges();
+
+            return Ok("Project deleted successfully");
+        }
+
     }
 }
