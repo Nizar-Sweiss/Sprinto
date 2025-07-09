@@ -2,6 +2,10 @@
 
 import 'dart:convert';
 
+import 'package:app/config/colors.dart';
+import 'package:app/utils/custom_app_bar.dart';
+import 'package:app/utils/custom_search_bar.dart';
+import 'package:app/utils/storage/storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';

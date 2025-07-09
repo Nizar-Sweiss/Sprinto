@@ -7,49 +7,95 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int crossAxisCount = MediaQuery.of(context).size.width > 800 ? 4
-        : MediaQuery.of(context).size.width > 600 ? 3
-        : 2;
+    int crossAxisCount = 4;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Projects'),
-        centerTitle: true,
-        elevation: 2,
-      ),
+      appBar: CustomAppBar(screenName: "Projects"),
       body: Obx(() {
         if (controller.loading.value) {
           return const Center(child: CircularProgressIndicator());
-        } else if (controller.userProjects.isEmpty) {
-          return const Center(child: Text("No projects found."));
         } else {
-          return Padding(
-            padding: const EdgeInsets.all(16),
-            child: GridView.builder(
-              itemCount: controller.userProjects.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: crossAxisCount,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 16,
-                childAspectRatio: 1.2,
+          return Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    primaryColor,
+                    mutedPurple,
+                    secondaryColor,
+                  ],
+                  begin: Alignment.bottomLeft,
+                  end: Alignment.topRight,
+                ),
               ),
-              itemBuilder: (context, index) {
-                final project = controller.userProjects[index];
-                return ProjectCard(
-                  project: project,
-                  onDelete: () => controller.deleteProject(project),
-                  onEdit: () => controller.showEditDialog(context, project,false),
-                );
-              },
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomSearchBar(
+                      controller: controller.searchController,
+                      onChanged: (value) => controller.onSearchBarChange(),
+                      onClear: () => controller.onSearchBarClear(),
+                      showClearButton: true,
+                    ),
+
+                    Expanded(
+                      child: GridView.builder(
+                        padding: const EdgeInsets.all(16),
+                        itemCount: (controller.userProjectsTemp.isEmpty)
+                            ? 1 // Only show add button if no projects
+                            : controller.userProjectsTemp.length + 1,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: crossAxisCount,
+                          crossAxisSpacing: 16,
+                          mainAxisSpacing: 16,
+
+                        ),
+                        itemBuilder: (context, index) {
+                          if (index == 0) {
+                            return GestureDetector(
+                              onTap: () =>
+                                  controller.showEditDialog(context, null, true),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade200,
+                                  borderRadius: BorderRadius.circular(16),
+                                  border: Border.all(color: Colors.grey.shade400),
+                                ),
+                                child: Center(
+                                  child: Icon(
+                                    Icons.add,
+                                    size: 50,
+                                    color: Colors.grey.shade600,
+                                  ),
+                                ),
+                              ),
+                            );
+                          } else {
+                            final project =
+                            controller.userProjectsTemp[index - 1];
+                            return ProjectCard(
+                              project: project,
+                              onDelete: () => controller.deleteProject(project),
+                              onEdit: () => controller.showEditDialog(
+                                context,
+                                project,
+                                false,
+                              ),
+                            );
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           );
         }
       }),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => controller.showEditDialog(context, null, true),
-        icon: const Icon(Icons.add),
-        label: const Text("Add Project"),
-      ),
+
     );
   }
 }

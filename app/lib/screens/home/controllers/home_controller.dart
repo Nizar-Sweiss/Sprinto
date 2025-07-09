@@ -2,11 +2,15 @@ part of home;
 
 class HomeController extends GetxController {
   var http = HttpService.instance;
+  var storage = StorageService.instance;
+
   RxList<Projects> userProjects = <Projects>[].obs;
+  RxList<Projects> userProjectsTemp = <Projects>[].obs;
   RxBool loading = false.obs;
 
   var titleController = TextEditingController();
   var descriptionController = TextEditingController();
+  var searchController = TextEditingController();
   @override
   void onInit() {
     fetchData();
@@ -24,7 +28,7 @@ class HomeController extends GetxController {
   }
 
   Future<void> getProjects() async {
-    Map body = {"created_by": 1};
+    Map body = {"created_by":storage.read('userId')};
     var res = await http.post(Get.context, Api.getUserProjects, body);
 
     if (res.statusCode == 200) {
@@ -32,6 +36,7 @@ class HomeController extends GetxController {
         userProjects.value = (jsonDecode(res.body) as List)
             .map((e) => Projects.fromJson(e))
             .toList();
+        userProjectsTemp.value = userProjects.toList();
       }
     } else {
       RequestHandler.errorRequest(Get.context!, message: res.body);
@@ -134,7 +139,7 @@ class HomeController extends GetxController {
       "id": 0,
       "title": titleController.text,
       "description": descriptionController.text,
-      "created_by": 1,
+      "created_by": storage.read('userId'),
     };
     var res = await http.post(Get.context, Api.addProject, body);
     if (res.statusCode == 200) {
@@ -144,5 +149,25 @@ class HomeController extends GetxController {
     } else {
       RequestHandler.errorRequest(Get.context!, message: res.body);
     }
+  }
+
+   onSearchBarChange() {
+     if (searchController.text.isEmpty) {
+       userProjectsTemp.value = userProjects.toList();
+     } else {
+       userProjectsTemp.value = userProjects.where(
+             (element) {
+               print( element.title.toLowerCase().contains(searchController.text.toLowerCase()));
+               return element.title.toLowerCase().contains(searchController.text.toLowerCase());
+             },
+       ).toList();
+     }
+
+  }
+
+  void onSearchBarClear() {
+    searchController.clear();
+    userProjectsTemp.value = userProjects.toList();
+
   }
 }
