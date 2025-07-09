@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-
-const primaryColor = Color.fromRGBO(255, 168, 0, 1.0);
-const secondaryColor = Color.fromRGBO(0, 139, 114, 1.0);
+/// App theme Color Combo
+const Color primaryColor = Color(0xFF355C7D);
+const Color secondaryColor = Color(0xFFFF7582);
+const Color mutedPurple = Color(0xFF725A7A);
+const Color rosePink = Color(0xFFC56C86);
 
 const cardColor = Color.fromRGBO(38, 40, 55, 1);
 const canvasColor = Color.fromRGBO(31, 29, 44, 1);

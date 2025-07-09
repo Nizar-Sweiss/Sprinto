@@ -33,7 +33,6 @@ class HomeScreen extends StatelessWidget {
                 mainAxisSpacing: 16,
                 childAspectRatio: 1.2,
               ),
-              // todo remove context since am using getX
               itemBuilder: (context, index) {
                 final project = controller.userProjects[index];
                 return ProjectCard(

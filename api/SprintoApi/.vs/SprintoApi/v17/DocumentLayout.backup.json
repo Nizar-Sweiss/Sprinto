@@ -78,8 +78,7 @@
               "RelativeToolTip": "SprintoApi\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-05T16:49:02.036Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-05T16:49:02.036Z"
             },
             {
               "$type": "Document",
@@ -111,9 +110,9 @@
               "Title": "Task.cs",
               "DocumentMoniker": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Models\\Task.cs",
               "RelativeDocumentMoniker": "SprintoApi\\Models\\Task.cs",
-              "ToolTip": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Models\\Task.cs*",
-              "RelativeToolTip": "SprintoApi\\Models\\Task.cs*",
-              "ViewState": "AgIAAAgAAAAAAAAAAIA7wBUAAAATAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\nizar\\Documents\\GitHub\\Sprinto\\api\\SprintoApi\\SprintoApi\\Models\\Task.cs",
+              "RelativeToolTip": "SprintoApi\\Models\\Task.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAIA3wBMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-05T16:14:23.752Z",
               "EditorCaption": ""
@@ -128,8 +127,7 @@
               "RelativeToolTip": "SprintoApi\\Controllers\\TasksController.cs",
               "ViewState": "AgIAADwAAAAAAAAAAAAwwEoAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-05T16:13:44.14Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-05T16:13:44.14Z"
             },
             {
               "$type": "Document",
