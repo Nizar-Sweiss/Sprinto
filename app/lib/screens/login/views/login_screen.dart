@@ -46,8 +46,8 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text(
-                    'Login',
+                   Text(
+                    'Login'.tr,
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -70,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                     isPassword: true,
                   ),
                   CustomButton(
-                    text: 'Login',
+                    text: 'Login'.tr,
                     icon: Icons.arrow_forward_ios_rounded,
                     onPressed: () => controller.signInRequest(),
                   ),

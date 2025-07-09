@@ -35,7 +35,7 @@ class ProjectDetailsController extends GetxController {
         RequestHandler.errorRequest(Get.context!, message: res.body);
       }
     } catch (e) {
-      Get.snackbar("Error", "Failed to fetch tasks");
+      Get.snackbar("Error", "Failed to fetch tasks",snackPosition: SnackPosition.BOTTOM,backgroundColor: Colors.red);
     }
 
     loading.value = false;
@@ -58,7 +58,7 @@ class ProjectDetailsController extends GetxController {
         RequestHandler.errorRequest(Get.context!, message: res.body);
       }
     } catch (e) {
-      Get.snackbar("Error", "Failed to update task status");
+      Get.snackbar("Error", "Failed to update task status",snackPosition: SnackPosition.BOTTOM,backgroundColor: Colors.red);
     }
   }
 
@@ -106,12 +106,12 @@ class ProjectDetailsController extends GetxController {
           tasks[index] = task;
           tasks.refresh();
         }
-        Get.snackbar("Success", "Task updated");
+        Get.snackbar("Success", "Task updated",snackPosition: SnackPosition.BOTTOM,backgroundColor: Colors.green);
       } else {
         RequestHandler.errorRequest(Get.context!, message: res.body);
       }
     } catch (e) {
-      Get.snackbar("Error", "Failed to update task");
+      Get.snackbar("Error", "Failed to update task",snackPosition: SnackPosition.BOTTOM,backgroundColor: Colors.red);
     }
   }
 
@@ -233,7 +233,7 @@ class ProjectDetailsController extends GetxController {
                 selectedStatus = 0;
                 Navigator.pop(context);
               } else {
-                Get.snackbar("Error", "Please fill all fields");
+                Get.snackbar("Error", "Please fill all fields",snackPosition: SnackPosition.BOTTOM,backgroundColor: Colors.red);
               }
             },text: "Save",gradientColors: [secondaryColor,secondaryColor], ),
 
@@ -267,12 +267,12 @@ class ProjectDetailsController extends GetxController {
         final task = Tasks.fromJson(jsonDecode(res.body));
         tasks.add(task);
         tasks.refresh(); // Update UI
-        Get.snackbar("Success", "Task added successfully");
+        Get.snackbar("Success", "Task added successfully",snackPosition: SnackPosition.BOTTOM,backgroundColor: Colors.green);
       } else {
         RequestHandler.errorRequest(Get.context!, message: res.body);
       }
     } catch (e) {
-      Get.snackbar("Error", "Failed to add task");
+      Get.snackbar("Error", "Failed to add task",snackPosition: SnackPosition.BOTTOM,backgroundColor: Colors.red);
     }
   }
 
@@ -335,12 +335,12 @@ class ProjectDetailsController extends GetxController {
       if (res.statusCode == 200) {
         tasks.removeWhere((task) => task.id == taskId.id);
         tasks.refresh();
-        Get.snackbar("Deleted", "Task deleted successfully");
+        Get.snackbar("Deleted", "Task deleted successfully",snackPosition: SnackPosition.BOTTOM,backgroundColor: Colors.green);
       } else {
         RequestHandler.errorRequest(Get.context!, message: res.body);
       }
     } catch (e) {
-      Get.snackbar("Error", "Failed to delete task");
+      Get.snackbar("Error", "Failed to delete task",snackPosition: SnackPosition.BOTTOM,backgroundColor: Colors.red);
     }
   }
 }

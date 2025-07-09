@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomTextField extends StatefulWidget {
   final String title;
@@ -41,7 +42,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            widget.title,
+            widget.title.tr,
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w400,
@@ -67,7 +68,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               decoration: InputDecoration(
                 fillColor: Colors.transparent,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
-                hintText: widget.hint,
+                hintText: widget.hint.tr,
                 border: InputBorder.none,
                 prefixIcon: widget.prefixIcon != null
                     ? Icon(widget.prefixIcon, color: Colors.grey[600])
