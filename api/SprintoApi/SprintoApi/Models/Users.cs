@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SprintoApi.Models
 {
@@ -8,6 +9,8 @@ namespace SprintoApi.Models
         public int id { get; set; }
         public string user_name { get; set; }
         public string password { get; set; }
+        [NotMapped]
+        public string token  { get; set; }
 
     }
 

@@ -1,7 +1,8 @@
 part of login;
 
-class LoginController extends GetxController {
+class LoginController extends GetxController with GetSingleTickerProviderStateMixin  {
   var http = HttpService.instance;
+  var storage = StorageService.instance;
 
   User? user;
 
@@ -22,15 +23,18 @@ class LoginController extends GetxController {
 
     if (res.statusCode == 200) {
       user = User.fromJson(jsonDecode(res.body));
+      storage.write('jwt_token', user?.token ?? '') ;
+      storage.write('userId', user!.id) ;
       Get.offAllNamed(AppRoutes.home);
-    } else if (res.statusCode == 401) {
+    }else{
       RequestHandler.errorRequest(Get.context!, message: res.body);
     }
-    // todo add else
+
   }
 
   void setLoading() {
     loading = !loading;
     update();
   }
+
 }

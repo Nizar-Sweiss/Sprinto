@@ -48,7 +48,7 @@
         }
       }
     },
-    "/api/Login/Login": {
+    "/api/Login/login": {
       "post": {
         "tags": [
           "Login"

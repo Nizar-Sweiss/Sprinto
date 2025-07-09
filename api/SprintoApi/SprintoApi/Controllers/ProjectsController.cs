@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SprintoApi.Data;
 using SprintoApi.Models;
 
@@ -16,7 +17,7 @@ namespace SprintoApi.Controllers
         [HttpPost]
         [Route("getUserProjects")]
         public IActionResult getUserProjects(ProjectsDto projectsDto)
-        {
+            {
             List<Projects> projects = dbContext.projects.ToList().Where(e => e.created_by == projectsDto.created_by).ToList();
 
             return Ok(projects);
