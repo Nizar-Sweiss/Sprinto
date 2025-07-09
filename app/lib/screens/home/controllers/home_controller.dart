@@ -44,16 +44,9 @@ class HomeController extends GetxController {
   }
 
   Future<void> deleteProject(Projects project) async {
-    var dialogRes = await Get.defaultDialog(
-      title: "Delete Project",
-      middleText: "Are you sure you want to delete this project?",
-      textCancel: "Cancel",
-      textConfirm: "Delete",
-      confirmTextColor: Colors.white,
-      onConfirm: () async {
-        Navigator.pop(Get.context!, true);
-      },
-    );
+
+    var dialogRes = await PopUps.askDialog(Icon(Icons.warning), "Delete Project", "Are you sure you want to delete this project?");
+
     if (dialogRes is bool && dialogRes) {
       Map body = {
         "id": project.id,
@@ -64,13 +57,13 @@ class HomeController extends GetxController {
       try {
         var res = await http.post(Get.context, Api.deleteProject, body);
         if (res.statusCode == 200) {
-          userProjects.removeWhere((p) => p.id == project.id);
-          Get.snackbar("Success", "Project deleted successfully");
+          userProjectsTemp.removeWhere((p) => p.id == project.id);
+          Get.snackbar("Success", "Project deleted successfully",snackPosition: SnackPosition.BOTTOM,backgroundColor: Colors.green);
         } else {
           RequestHandler.errorRequest(Get.context!, message: res.body);
         }
       } catch (e) {
-        Get.snackbar("Error", "Failed to delete project");
+        Get.snackbar("Error", "Failed to delete project",snackPosition: SnackPosition.BOTTOM,backgroundColor: Colors.red);
       }
     }
   }
@@ -82,37 +75,37 @@ class HomeController extends GetxController {
     }
 
     Get.dialog(
+
       AlertDialog(
-        title: Text(isAddNew ? "Add Project" : "Edit Project"),
+        backgroundColor: primaryColor,
+        title: Text(isAddNew ? "Add Project" : "Edit Project",style: TextStyle(color: Colors.white),),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            TextField(
-              controller: titleController,
-              decoration: const InputDecoration(labelText: 'Title'),
-            ),
+            CustomTextField(title: 'Title', hint: 'enter title', controller: titleController),
+
             const SizedBox(height: 12),
-            TextField(
-              controller: descriptionController,
-              decoration: const InputDecoration(labelText: 'Description'),
-              maxLines: 3,
-            ),
+            CustomTextField(title: 'Description', hint: 'enter Description', controller: descriptionController),
+
           ],
         ),
         actions: [
-          TextButton(onPressed: () => Get.back(), child: const Text("Cancel")),
-          ElevatedButton(
-            onPressed: () async {
-              if (isAddNew) {
+          TextButton(onPressed: () => Get.back(), child: const Text("Cancel",style: TextStyle(color: Colors.white),)),
+          CustomButton(text: "Save", onPressed: () async {
+            if (isAddNew ) {
+              if(titleController.text.isNotEmpty &&  descriptionController.text.isNotEmpty){
                 addProject();
-              } else {
-                await editProject(project!.id);
+              }else{
+                PopUps.showSnackBar(context, red, "Fill the fields to add new project!");
               }
-              descriptionController.clear();
-              titleController.clear();
-            },
-            child: const Text("Save"),
-          ),
+
+            } else {
+              await editProject(project!.id);
+            }
+            descriptionController.clear();
+            titleController.clear();
+          },gradientColors: [secondaryColor,secondaryColor],)
+
         ],
       ),
     );
@@ -128,7 +121,7 @@ class HomeController extends GetxController {
     if (res.statusCode == 200) {
       Get.back();
       await fetchData();
-      Get.snackbar("Success", "Project updated successfully");
+      Get.snackbar("Success", "Project updated successfully",snackPosition: SnackPosition.BOTTOM,backgroundColor: Colors.green);
     } else {
       RequestHandler.errorRequest(Get.context!, message: res.body);
     }
@@ -145,7 +138,7 @@ class HomeController extends GetxController {
     if (res.statusCode == 200) {
       Get.back();
       await fetchData();
-      Get.snackbar("Success", "Project Added successfully");
+      Get.snackbar("Success", "Project Added successfully",snackPosition: SnackPosition.BOTTOM,backgroundColor: Colors.green);
     } else {
       RequestHandler.errorRequest(Get.context!, message: res.body);
     }
