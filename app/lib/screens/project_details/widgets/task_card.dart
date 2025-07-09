@@ -23,7 +23,9 @@ class TaskCard extends StatelessWidget {
           children: [
             IconButton(
               icon: Icon(Icons.edit, color: Colors.blue),
-              onPressed: () => controller.showEditTaskDialog(context, task),
+              onPressed: () => controller.showTaskDialog(
+                task: task,
+              )
             ),
             IconButton(
               icon: const Icon(Icons.delete, color: Colors.red),

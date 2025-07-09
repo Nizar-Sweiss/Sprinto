@@ -8,33 +8,18 @@ class ProjectDetailsController extends GetxController {
   RxBool loading = false.obs;
   var titleController = TextEditingController();
   var descriptionController = TextEditingController();
-  DateTime? selectedDate ;
-  int? selectedStatus ;
+  DateTime? selectedDate;
+  int? selectedStatus = 0;
 
   List<Tasks> tasksByStatus(int status) {
     return tasks.where((task) => task.status == status).toList();
   }
 
-  void updateTaskStatus(int id, int newStatus) {
-    int index = tasks.indexWhere((task) => task.id == id);
-    if (index != -1) {
-      tasks[index] = tasks[index].copyWith(status: newStatus);
-      tasks.refresh();
-    }
-  }
-
-
-
   @override
   void onInit() {
     super.onInit();
-
     project = Get.arguments as Projects;
-    fetchData();
-  }
-
-  Future<void> fetchData() async {
-    await fetchTasks();
+    fetchTasks();
   }
 
   Future<void> fetchTasks() async {
@@ -50,14 +35,13 @@ class ProjectDetailsController extends GetxController {
         RequestHandler.errorRequest(Get.context!, message: res.body);
       }
     } catch (e) {
-      print("ddd $e");
       Get.snackbar("Error", "Failed to fetch tasks");
     }
 
     loading.value = false;
   }
 
-  Future<void> updateTaskStatusOnServer(int taskId, int newStatus) async {
+  Future<void> updateTaskStatus(int taskId, int newStatus) async {
     try {
       Map<String, dynamic> body = {"id": taskId, "status": newStatus};
 
@@ -104,7 +88,7 @@ class ProjectDetailsController extends GetxController {
     }
   }
 
-  Future<void> editTaskOnServer(Tasks task) async {
+  Future<void> editTask(Tasks task) async {
     try {
       Map<String, dynamic> body = {
         "id": task.id,
@@ -131,37 +115,35 @@ class ProjectDetailsController extends GetxController {
     }
   }
 
-  void showEditTaskDialog(BuildContext context, Tasks task) {
-     titleController = TextEditingController(text: task.title);
-     descriptionController = TextEditingController(text: task.description);
-     selectedDate = task.dueDate;
-     selectedStatus = task.status;
+  void showTaskDialog({
+    Tasks? task, // Null → Add, Non-null → Edit
+    int? status, // Only needed for adding
+  }) {
+    titleController = TextEditingController(text: task?.title ?? '');
+    descriptionController = TextEditingController(text: task?.description ?? '');
+    selectedDate = task?.dueDate ?? DateTime.now();
+    selectedStatus = task?.status ?? status ?? 0;
 
     showDialog(
-      context: context,
+      context: Get.context!,
       builder: (context) {
         return AlertDialog(
-          title: const Text("Edit Task"),
+          backgroundColor: primaryColor,
+          title: Text(task == null ? "Add New Task" : "Edit Task",style: TextStyle(color: white),),
           content: StatefulBuilder(
             builder: (context, setState) {
               return SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    TextField(
-                      controller: titleController,
-                      decoration: const InputDecoration(labelText: "Title"),
-                    ),
-                    TextField(
-                      controller: descriptionController,
-                      decoration: const InputDecoration(
-                        labelText: "Description",
-                      ),
-                    ),
+                    CustomTextField(title: "Title", hint: "Enter title", controller: titleController),
+                    CustomTextField(title: "Description", hint: "Enter description", controller: descriptionController),
+
+
                     const SizedBox(height: 8),
                     DropdownButtonFormField<int>(
                       value: selectedStatus,
-                      items: [
+                      items: const [
                         DropdownMenuItem(value: 0, child: Text("To-Do")),
                         DropdownMenuItem(value: 1, child: Text("Doing")),
                         DropdownMenuItem(value: 2, child: Text("Done")),
@@ -173,20 +155,34 @@ class ProjectDetailsController extends GetxController {
                           });
                         }
                       },
-                      decoration: const InputDecoration(labelText: "Status"),
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.check_circle_outline),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(color: Colors.white)
+                        ),
+                        filled: true,
+                        fillColor: white,
+                      ),
+                      dropdownColor: white,
+                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
-                    const SizedBox(height: 8),
-                    TextButton(
+
+                    8.ph,
+                    TextButton.icon(
+                      icon: const Icon(Icons.date_range,color: white,),
+                      label: Text(
+                        selectedDate == null
+                            ? "Pick Due Date"
+                            : "Due: ${selectedDate?.toLocal().toString().split(' ')[0]}",
+                        style: TextStyle(color: white),
+                      ),
                       onPressed: () async {
                         final pickedDate = await showDatePicker(
                           context: context,
-                          initialDate: selectedDate,
-                          firstDate: DateTime.now().subtract(
-                            const Duration(days: 365),
-                          ),
-                          lastDate: DateTime.now().add(
-                            const Duration(days: 365 * 5),
-                          ),
+                          initialDate: selectedDate ?? DateTime.now(),
+                          firstDate: DateTime.now().subtract(const Duration(days: 365)),
+                          lastDate: DateTime.now().add(const Duration(days: 365 * 5)),
                         );
                         if (pickedDate != null) {
                           setState(() {
@@ -194,9 +190,6 @@ class ProjectDetailsController extends GetxController {
                           });
                         }
                       },
-                      child: Text(
-                        "Due Date: ${selectedDate?.toLocal().toString().split(' ')[0]}",
-                      ),
                     ),
                   ],
                 ),
@@ -206,109 +199,50 @@ class ProjectDetailsController extends GetxController {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text("Cancel"),
+              child: const Text("Cancel",style: TextStyle(color: Colors.white),),
             ),
-            ElevatedButton(
-              onPressed: () async {
-                if (titleController.text.isNotEmpty &&
-                    descriptionController.text.isNotEmpty) {
-                  Tasks updatedTask = task.copyWith(
-                    title: titleController.text,
-                    description: descriptionController.text,
-                    status: selectedStatus,
-                    dueDate: selectedDate,
-                  );
-
-                  await editTaskOnServer(updatedTask);
-                  titleController.clear();
-                  descriptionController.clear();
-                  selectedDate = DateTime.now();
-                  selectedStatus = 0;
-                  Navigator.pop(context);
-                } else {
-                  Get.snackbar("Error", "Please fill all fields");
-                }
-              },
-              child: const Text("Save"),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  void showAddTaskDialog( int status) {
-    showDialog(
-      context: Get.context!,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text("Add New Task"),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: titleController,
-                decoration: const InputDecoration(labelText: "Title"),
-              ),
-              TextField(
-                controller: descriptionController,
-                decoration: const InputDecoration(labelText: "Description"),
-              ),
-              const SizedBox(height: 8),
-              TextButton.icon(
-                icon: const Icon(Icons.date_range),
-                label: Text(
-                  selectedDate == null
-                      ? "Pick Due Date"
-                      : "Due: ${selectedDate?.toLocal().toString().split(' ')[0]}",
-                ),
-                onPressed: () async {
-                  final pickedDate = await showDatePicker(
-                    context: context,
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime.now(),
-                    lastDate: DateTime.now().add(const Duration(days: 365 * 5)),
-                  );
-                  if (pickedDate != null) {
-                    selectedDate = pickedDate;
-                  }
-                },
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text("Cancel"),
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                if (titleController.text.isNotEmpty &&
-                    descriptionController.text.isNotEmpty &&
-                    selectedDate != null) {
+            CustomButton(onPressed: () async {
+              if (titleController.text.isNotEmpty &&
+                  descriptionController.text.isNotEmpty &&
+                  selectedDate != null) {
+                if (task == null) {
+                  // Add new task
                   await addTaskToApi(
                     projectId: project.id,
                     title: titleController.text,
                     description: descriptionController.text,
-                    status: status,
+                    status: selectedStatus!,
                     dueDate: selectedDate!,
-                    createdBy: 1, // Replace with real user ID later
+                    createdBy: 1, // Replace with real user ID
                   );
-                  titleController.clear();
-                  descriptionController.clear();
-                  selectedDate= DateTime.now();
-                  Navigator.pop(context);
                 } else {
-                  Get.snackbar("Error", "Please fill all fields");
+                  // Edit task
+                  Tasks updatedTask = task.copyWith(
+                    title: titleController.text,
+                    description: descriptionController.text,
+                    status: selectedStatus,
+                    dueDate: selectedDate!,
+                  );
+                  await editTask(updatedTask);
                 }
-              },
-              child: const Text("Save"),
-            ),
+
+                // Clear & Close
+                titleController.clear();
+                descriptionController.clear();
+                selectedDate = DateTime.now();
+                selectedStatus = 0;
+                Navigator.pop(context);
+              } else {
+                Get.snackbar("Error", "Please fill all fields");
+              }
+            },text: "Save",gradientColors: [secondaryColor,secondaryColor], ),
+
           ],
         );
       },
     );
   }
+
 
   Future<void> addTaskToApi({
     required int projectId,
